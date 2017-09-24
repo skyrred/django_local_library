@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+<center>
+<div class="w3-contain w3-border w3-round-xlarge" style="background-color: #00796B;width:75%;border:2px white;">
+<article>
+<header>
+<h1 class="w3-contain w3-border w3-round-xlarge" style="margin:15px;text-align: center;font-family: bold, Arial, sans-serif;background-color: white;color:#00796B;"> {{post.title}} </h1>
+</header>
+<center>
+<img src="{{post.url}}" style="margin:auto;width: 500px;height: 250px;"></center>
+<div class="w3-contain w3-border w3-round-xlarge" style="background-color: white;border:#00796B solid ;color:black;font-family: Helvetica, sans-serif;text-align:left;margin: 10px;padding: 10px;">
+  {{post.content|safe}}
+</div>
+</article>
+<p class=" " style="float: right;color:white; >
+Posted on
+<time datetime="{{post.created|date:"c"}}">
+{{post.created|date}}
+</time>
+</p>
+</div></center>
+{% endblock %}

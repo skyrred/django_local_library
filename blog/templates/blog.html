@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Blog Archive {% endblock %}
+
+{% block content %}
+<center>
+<h1 class="w3-contain w3-border w3-round-xlarge  " style="color:white;font-size:60px;background-color:#024237;border:5px solid white;	 "> My Blog Archive </h1>
+</center>
+
+
+<center>
+<div  style="width:65%;" >
+	<div style="float:right;width:46%;">
+	{% for post in posts %}
+		<div class="w3-border w3-round-xlarge" style="float:right;clear:right;width:100%;text-align: center;height:470px;background-color: #056b5a;margin:10px;">
+
+			<h2 class="w3-contain   w3-border w3-round-xlarge" style="color:white;background-color:#024237;width:100%;padding-top: 20px;margin-top: 0px;">
+			<a href="{{post.get_absolute_url}}">
+			{{post.title}}
+			</a>
+			</h2>	
+			<center>
+			<img src="{{post.url}}" style="margin:auto;width:200px;height:100px;">
+			</center>
+			<p style="color:white;text-align: left;margin:10px;font-family: Helvetica, sans-serif;">{{post.description}}</p>
+		
+			<h3 class="w3-contain" style="float: right;color:white;background-color: #004D40;width:100%;">
+			Posted on
+			<time datetime="{{post.created|date:'c'}}">
+			{{post.created|date}}
+			</time>
+			</h3>
+			
+			</div><br>
+	{% endfor %}
+	</div>
+	<div style="float:left;width:46%;">
+	{% for post in posts2%}
+		<div class="w3-border w3-round-xlarge" style="clear:left;width:100%;text-align: center;height:470px;background-color: #056b5a;margin-right: 20px;margin-top: 7px;">
+			<h2 class="w3-contain   w3-border w3-round-xlarge" style="color:white;background-color:#024237;width:100%;padding-top: 20px;margin-top: 0px;"><a href="{{post.get_absolute_url}}">
+			{{post.title}}</a></h2>
+			<center>
+			<img src="{{post.url}}" style="margin:auto;width:200px;height:100px;">
+			</center>
+			<p style="color:white;text-align: left;margin: 10px;"> {{post.description}}</p>
+			<h3 class="w3-contain" style="float: right;color:white;background-color: #004D40;width:100%;">
+
+			post on 
+			<time datetime="{{post2.created|date:'c'}}">
+			{{post.created|date}}
+			</time>
+			</h3>
+			</div><br>
+	{%endfor%}
+	</div>
+</div></center>
+
+
+{% endblock %}
